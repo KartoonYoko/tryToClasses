@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include "Complex.h"
+#include "../complex1.h"
 #include <vector>
 #include <fstream>
 
@@ -35,6 +35,7 @@ int main()
 	}
 	out.close();
 	
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
