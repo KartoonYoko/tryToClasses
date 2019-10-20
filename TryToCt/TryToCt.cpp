@@ -6,11 +6,13 @@
 #include "../complex1.h"
 #include <vector>
 #include <fstream>
+#include "../Tests/test.h"
 
 using namespace std;
 
 int main()
 {
+	test_ComplexClass_all();
 	const int size_arr = 10;
 	std::vector<Complex> a(size_arr);
 	ofstream f("file.txt");

@@ -4,181 +4,407 @@
 
 using namespace std;
 
-void test_SimpleClass_constructor(){
-    {   // отдельные проверки должны быть в отдельных блоках,
-        // чтобы исклюить влияние одних проверок на другие
-        Seconds s;
-        assert(s.seconds() == 0);   }
+void test_ComplexClass_constructor() {
+	{
+		Complex num;
+		assert((num.getRe() == 0) && (num.getIm == 0));
+	}
 
-    {   Seconds *s = new Seconds;
-        assert(s->seconds() == 0);   }
+	{
+		Complex num(2,5);
+		assert((num.getRe() == 2) && (num.getIm == 5));
+	}
 
-    {   Seconds *s = new Seconds(5);
-        assert(s->seconds() == 5);   }
+	{
+		Complex num(2.5, 5.89);
+		assert((num.getRe() == 2.5) && (num.getIm == 5.89));
+	}
 
-    {   Seconds s(0);
-        assert(s.seconds() == 0);   }
+	{
+		Complex *num = new Complex;
+		assert((num.getRe() == 0) && (num.getIm == 0));
+	}
 
-    {
-        Seconds s(42);
-        assert(s.seconds() == 42);  }
+	{
+		Complex* num = new Complex(3,4);
+		assert((num.getRe() == 3) && (num.getIm == 4));
+	}
 
-    {
-        Seconds s(59);
-        assert(s.seconds() == 59);  }
+	cout << "test_ComplexClass_constructor OK" << endl;
+}
 
+void test_ComplexClass_ComplexMinusComplex_OperatorMinus() {
 
-    {   try{
-            Seconds s(60);
-            assert(0 && "s.setSeconds(60) Failed");}
-        catch (SecondsException e) {;} }
+	{
+		Complex num1(4, 2);
+		Complex num2(2, 1);
+		Complex result = num1 - num2;
+		assert((result.getRe() == 2) && (result.getIm() == 1) && "ComplexMinusComplex_OperatorMinus Failed");
+	}
 
+	{
+		Complex num1(0, 0);
+		Complex num2(0, 0);
+		Complex result = num1 - num2;
+		assert((result.getRe() == 0) && (result.getIm() == 0) && "ComplexMinusComplex_OperatorMinus Failed");
+	}
 
-    {   try{
-            Seconds s(100);
-            assert(0 && "s.setSeconds(100) Failed");}
-        catch (SecondsException e) {;} }
+	{
+		Complex num1(0, 0);
+		Complex num2(-1, -19);
+		Complex result = num1 - num2;
+		assert((result.getRe() == -1) && (result.getIm() == -19) && "ComplexMinusComplex_OperatorMinus Failed");
+	}
 
-    {   try{
-            Seconds s(-1);
-            assert(0 && "s.setSeconds(-1) Failed");
-        }
-        catch (SecondsException e) {;} }
+	cout << "test_ComplexClass_ComplexMinusComplex_OperatorMinus OK" << endl;
+}
+void test_ComplexClass_ComplexDivideComplex_OperatorDivision() {
+	{
+		Complex num1(4, 2);
+		Complex num2(2, 1);
+		Complex result = num1 / num2;
+		assert((result.getRe() == 2) && (result.getIm() == 0) && "ComplexNumberDivideComplexNumber_OperatorDivision Failed");
+	}
 
-    {   try{
-            Seconds s(-100);
-           assert(0 && "s.setSeconds(-100) Failed");}
-        catch (SecondsException e) {;} }
+	{
+		try {
+			Complex num1(4, 2);
+			Complex num2(0, 0);
+			Complex result = num1 / num2;
+			assert(0 && "(num2 = num1 / num2) Failed");
+		}
+		catch(ComplexException e)
+	}
 
-    cout << "test_SimpleClass_constructor OK" << endl;
+	cout << "test_ComplexClass_ComplexDivideComplex_OperatorDivision OK" << endl;
+}
+void test_ComplexClass_ComplexMultiplyComplex_OperatorMultiplication() {
+
+	{
+		Complex num1(4, 2);
+		Complex num2(2, 1);
+		Complex result = num1 * num2;
+		assert((result.getRe() == 6) && (result.getIm() == 8) && "ComplexMultiplyComplex_OperatorMultiplication Failed");
+	}
+
+	{
+		Complex num1(0, 0);
+		Complex num2(0, 0);
+		Complex result = num1 / num2;
+		assert((result.getRe() == 0) && (result.getIm() == 0) && "ComplexMultiplyComplex_OperatorMultiplication Failed");
+	}
+
+	cout << "test_ComplexClass_ComplexMultiplyComplex_OperatorMultiplication OK" << endl;
+}
+void test_ComplexNumber_ComplexPlusComplex_OperatorPlus() {
+
+	{
+		Complex num1(4, 2);
+		Complex num2(2, 1);
+		Complex result = num1 + num2;
+		assert((result.getRe() == 6) && (result.getIm() == 3) && "ComplexPlusComplex_OperatorPlus Failed");
+	}
+
+	{
+		Complex num1(0, 0);
+		Complex num2(-2, -1);
+		Complex result = num1 + num2;
+		assert((result.getRe() == -2) && (result.getIm() == -1) && "ComplexPlusComplex_OperatorPlus Failed");
+	}
+
+	{
+		Complex num1(1.1,0 );
+		Complex num2(2.1, 1.1);
+		Complex result = num1 + num2;
+		assert((result.getRe() == 3.2) && (result.getIm() == 1.1) && "ComplexPlusComplex_OperatorPlus Failed");
+	}
+
+	cout << "test_ComplexNumber_ComplexOperatorComplex_OperatorPlus OK" << endl;
 }
 
 
-void test_SimpleClass_setSeconds(){
-    {   Seconds s;
-        s.setSeconds(0);
-        assert(s.seconds() == 0);   }
+void test_ComplexClass_ComplexMinusReal_OperatorMinus() {
+	{
+		Complex num1(4, 2);
+		Double num2 = 4;
+		Complex result = num1 - num2;
+		assert((result.getRe() == 0) && (result.getIm() == 1) && "ComplexMinusReal_OperatorMinus Failed");
+	}
 
-    {
-        Seconds s;
-        s.setSeconds(42);
-        assert(s.seconds() == 42);  }
+	{
+		Complex num1(0, 0);
+		Double num2 = 4;
+		Complex result = num1 - num2;
+		assert((result.getRe() == -4) && (result.getIm() == 0) && "ComplexMinusReal_OperatorMinus Failed");
+	}
 
-    {
-        Seconds s;
-        s.setSeconds(59);
-        assert(s.seconds() == 59);  }
+	{
+		Complex num1(-3, 0);
+		Double num2 = 4;
+		Complex result = num1 - num2;
+		assert((result.getRe() == -7) && (result.getIm() == 0) && "ComplexMinusReal_OperatorMinus Failed");
+	}
 
+	cout << "test_ComplexClass_ComplexMinusReal_OperatorMinus OK" << endl;
+}
+void test_ComplexClass_ComplexDivideReal_OperatorDivision() {
+	{
+		Complex num1(4, 2);
+		Double num2 = 4;
+		Complex result = num1 / num2;
+		assert((result.getRe() == 1) && (result.getIm() == 0.5) && "ComplexDivideReal_OperatorDivision Failed");
+	}
 
-    {   Seconds s;
-        try{
-            s.setSeconds(60);
-            assert(0 && "s.setSeconds(60) Failed");}
-        catch (SecondsException e) {;} }
+	{
+		try {
+			Complex num1(4, 2);
+			Double num2 = 0;
+			Complex result = num1 / num2;
+			assert(0 && "ComplexDivideReal_OperatorDivision Failed");
+		}
+		catch (ComplexException e)
+	}
 
+	cout << "test_ComplexClass_ComplexDivideReal_OperatorDivision OK" << endl;
+}
+void test_ComplexClass_ComplexMultiplyReal_OperatorMultiplication() {
 
-    {   Seconds s;
-        try{
-            s.setSeconds(100);
-            assert(0 && "s.setSeconds(100) Failed");}
-        catch (SecondsException e) {;} }
+	{
+		Complex num1(4, 2);
+		Double num2 = 4;
+		Complex result = num1 * num2;
+		assert((result.getRe() == 16) && (result.getIm() == 8) && "ComplexMultiplyReal_OperatorMultiplication Failed");
+	}
 
-    {   Seconds s;
-        try{
-            s.setSeconds(-1);
-            assert(0 && "s.setSeconds(-1) Failed");
-        }
-        catch (SecondsException e) {;} }
+	{
+		Complex num1(0, 0);
+		Double num2 = 4;
+		Complex result = num1 / num2;
+		assert((result.getRe() == 0) && (result.getIm() == 0) && "ComplexMultiplyReal_OperatorMultiplication Failed");
+	}
 
-    {   Seconds s;
-        try{
-            s.setSeconds(-100);
-           assert(0 && "s.setSeconds(-100) Failed");}
-        catch (SecondsException e) {;} }
+	cout << "test_ComplexClass_ComplexMultiplyReal_OperatorMultiplication OK" << endl;
+}
+void test_ComplexNumber_ComplexPlusReal_OperatorPlus() {
 
-    cout << "test_SimpleClass_setSeconds OK" << endl;
+	{
+		Complex num1(4, 2);
+		Double num2 = 4;
+		Complex result = num1 + num2;
+		assert((result.getRe() == 8) && (result.getIm() == 2) && "ComplexPlusReal_OperatorPlus Failed");
+	}
+
+	{
+		Complex num1(0, 0);
+		Double num2 = 4;
+		Complex result = num1 + num2;
+		assert((result.getRe() == 4) && (result.getIm() == 0) && "ComplexPlusReal_OperatorPlus Failed");
+	}
+
+	{
+		Complex num1(1.1, 0);
+		Double num2 = 4;
+		Complex result = num1 + num2;
+		assert((result.getRe() == 5.1) && (result.getIm() == 0) && "ComplexPlusReal_OperatorPlus Failed");
+	}
+
+	cout << "test_ComplexNumber_ComplexPlusReal_OperatorPlus OK" << endl;
+}
+
+void test_ComplexClass_ComplexMinusComplex_MethodSub() {
+
+	{
+		Complex result(4, 2);
+		Complex num2(2, 1);
+		result.sub(num2);
+		assert((result.getRe() == 2) && (result.getIm() == 1) && "ComplexMinusComplex_MethodSub Failed");
+	}
+
+	{
+		Complex result(0, 0);
+		Complex num2(0, 0);
+		result.sub(num2);
+		assert((result.getRe() == 0) && (result.getIm() == 0) && "ComplexMinusComplex_MethodSub Failed");
+	}
+
+	{
+		Complex result(0, 0);
+		Complex num2(-1, -19);
+		result.sub(num2);
+		assert((result.getRe() == -1) && (result.getIm() == -19) && "ComplexMinusComplex_MethodSub Failed");
+	}
+
+	cout << "test_ComplexClass_ComplexMinusComplex_MethodSub OK" << endl;
+}
+void test_ComplexClass_ComplexMultiplyComplex_MethodMult() {
+	{
+		Complex result(4, 2);
+		Complex num2(2, 1);
+		result.mult(num2);
+		assert((result.getRe() == 6) && (result.getIm() == 8) && "ComplexMultiplyComplex_MethodMult Failed");
+	}
+
+	{
+		Complex result(0, 0);
+		Complex num2(0, 0);
+		result.mult(num2);
+		assert((result.getRe() == 0) && (result.getIm() == 0) && "ComplexMultiplyComplex_MethodMult Failed");
+	}
+
+	cout << "test_ComplexClass_ComplexMultiplyComplex_MethodMult OK" << endl;
+}
+void test_ComplexNumber_ComplexPlusComplex_MethodAdd() {
+	{
+		Complex result(4, 2);
+		Complex num2(2, 1);
+		result.add(num2);
+		assert((result.getRe() == 6) && (result.getIm() == 3) && "ComplexPlusComplex_MethodAdd Failed");
+	}
+
+	{
+		Complex result(0, 0);
+		Complex num2(-2, -1);
+		result.add(num2);
+		assert((result.getRe() == -2) && (result.getIm() == -1) && "ComplexPlusComplex_MethodAdd Failed");
+	}
+
+	{
+		Complex result(1.1, 0);
+		Complex num2(2.1, 1.1);
+		result.add(num2);
+		assert((result.getRe() == 3.2) && (result.getIm() == 1.1) && "ComplexPlusComplex_MethodAdd Failed");
+	}
+
+	cout << "test_ComplexNumber_ComplexPlusComplex_MethodAdd OK" << endl;
+}
+
+void test_ComplexClass_ComplexMinusReal_MethodSub() {
+	{
+		Complex result(4, 2);
+		Double num2 = 4;
+		result.sub(num2);
+		assert((result.getRe() == 0) && (result.getIm() == 1) && "ComplexMinusReal_MethodSub Failed");
+	}
+
+	{
+		Complex result(0, 0);
+		Double num2 = 4;
+		result.sub(num2);
+		assert((result.getRe() == -4) && (result.getIm() == 0) && "ComplexMinusReal_MethodSub Failed");
+	}
+
+	{
+		Complex result(-3, 0);
+		Double num2 = 4;
+		result.sub(num2);
+		assert((result.getRe() == -7) && (result.getIm() == 0) && "ComplexMinusReal_MethodSub Failed");
+	}
+
+	cout << "test_ComplexClass_ComplexMinusReal_MethodSub OK" << endl;
+}
+void test_ComplexClass_ComplexMultiplyReal_MethodMult() {
+	{
+		Complex result(4, 2);
+		Double num2 = 4;
+		result.mult(num2);
+		assert((result.getRe() == 16) && (result.getIm() == 8) && "ComplexMultiplyReal_MethodMult Failed");
+	}
+
+	{
+		Complex result(0, 0);
+		Double num2 = 4;
+		result.mult(num2);
+		assert((result.getRe() == 0) && (result.getIm() == 0) && "ComplexMultiplyReal_MethodMult Failed");
+	}
+
+	cout << "test_ComplexClass_ComplexMultiplyReal_MethodMult OK" << endl;
+}
+void test_ComplexNumber_ComplexPlusReal_MethodAdd() {
+	{
+		Complex result(4, 2);
+		Double num2 = 4;
+		result.add(num2);
+		assert((result.getRe() == 8) && (result.getIm() == 2) && "ComplexPlusReal_OperatorPlus Failed");
+	}
+
+	{
+		Complex result(0, 0);
+		Double num2 = 4;
+		result.add(num2);
+		assert((result.getRe() == 4) && (result.getIm() == 0) && "ComplexPlusReal_OperatorPlus Failed");
+	}
+
+	{
+		Complex num1(1.1, 0);
+		Double num2 = 4;
+		result.add(num2);
+		assert((result.getRe() == 5.1) && (result.getIm() == 0) && "ComplexPlusReal_OperatorPlus Failed");
+	}
+
+	cout << "test_ComplexNumber_ComplexPlusReal_OperatorPlus OK" << endl;
+}
+
+void test_ComplexClass_FindingAbsoluteOfComplex() {
+	{
+		Complex num(2, 4);
+		double result;
+		result = num.abs();
+		assert((result == 4.47) && "FindingAbsoluteOfComplex Failed");
+	}
+
+	{
+		Complex num(-2, -4);
+		double result;
+		result = num.abs();
+		assert((result == 4.47) && "FindingAbsoluteOfComplex Failed");
+	}
+
+	cout << "test_ComplexClass_FindingAbsoluteOfComplex OK" << endl;
+}
+void test_ComplexClass_FindingArgumentOfComplex() {
+	{
+		Complex num(2, 4);
+		double result;
+		result = num.arg();
+		assert((result == 4.47) && "FindingArgumentOfComplex Failed");
+	}
+
+	{
+		Complex num(-2, -4);
+		double result;
+		result = num.arg();
+		assert((result == 4.47) && "FindingArgumentOfComplex Failed");
+	}
+
+	cout << "test_ComplexClass_FindingArgumentOfComplex OK" << endl;
 }
 
 
-void test_SimpleClass_tostring(){
-    {   Seconds s(0);
-        assert(s.toString() == "0");   }
 
-    {   Seconds s(5);
-        assert(s.toString() == "5");   }
 
-    {   Seconds s(59);
-        assert(s.toString() == "59");   }
-    cout << "test_SimpleClass_tostring OK" << endl;
+
+void test_ComplexClass_all() {
+
+	test_ComplexClass_constructor();
+
+	test_ComplexClass_ComplexMinusComplex_OperatorMinus();
+	test_ComplexClass_ComplexDivideComplex_OperatorDivision();
+	test_ComplexClass_ComplexMultiplyComplex_OperatorMultiplication();
+	test_ComplexNumber_ComplexPlusComplex_OperatorPlus();
+
+	test_ComplexClass_ComplexMinusReal_OperatorMinus();
+	test_ComplexClass_ComplexDivideReal_OperatorDivision();
+	test_ComplexClass_ComplexMultiplyReal_OperatorMultiplication();
+	test_ComplexNumber_ComplexPlusReal_OperatorPlus();
+
+	test_ComplexClass_ComplexMinusComplex_MethodSub();
+	test_ComplexClass_ComplexMultiplyComplex_MethodMult();
+	test_ComplexNumber_ComplexPlusComplex_MethodAdd();
+
+	test_ComplexClass_ComplexMinusReal_MethodSub();
+	test_ComplexClass_ComplexMultiplyReal_MethodMult();
+	test_ComplexNumber_ComplexPlusReal_MethodAdd();
+
+	test_ComplexClass_FindingAbsoluteOfComplex();
+	test_ComplexClass_FindingArgumentOfComplex();
 }
-
-
-void test_SimpleClass_plus_operator(){
-    {   Seconds s1(13), s2(20);
-        Seconds s = s1 + s2;
-        assert( s.seconds() == 33 );
-    }
-
-    {   Seconds s1(0), s2(20);
-        Seconds s = s1 + s2;
-        assert( s.seconds() == 20 );
-    }
-
-    {   Seconds s1(0), s2(0);
-        Seconds s = s1 + s2;
-        assert( s.seconds() == 0 );
-    }
-
-    {   Seconds s1(10), s2(49);
-        Seconds s = s1 + s2;
-        assert( s.seconds() == 59 );
-    }
-
-    {   Seconds s1(10), s2(50);
-        Seconds s = s1 + s2;
-        assert( s.seconds() == 0 );
-    }
-    cout << "test_SimpleClass_plus_operator OK" << endl;
-}
-
-
-void test_SimpleClass_increment_operator(){
-    {   Seconds s;
-        s++;
-        assert(s.seconds() == 1); }
-
-    {   Seconds s(2);
-        s++;
-        assert(s.seconds() == 3);}
-
-    {   Seconds s(58);
-        s++;
-        assert(s.seconds() == 59);}
-
-    {   Seconds s(59);
-        s++;
-        assert(s.seconds() == 0);}
-
-    cout << "test_SimpleClass_increment_operator OK" << endl;
-}
-
-
-void test_SimpleClass_plus_increment(){
-    Seconds s1, s2(12);
-    Seconds s3 = s1 + s2++;
-    assert (s3.seconds() == 12);
-    assert (s2.seconds() == 13);
-    cout << "test_SimpleClass_plus_increment OK" << endl;
-}
-
-
-void test_SimpleClass_all(){
-    test_SimpleClass_constructor();
-    test_SimpleClass_setSeconds();
-    test_SimpleClass_tostring();
-    test_SimpleClass_plus_operator();
-    test_SimpleClass_increment_operator();
-    test_SimpleClass_plus_increment();
-    cout << "test_SimpleClass OK" << endl << endl;
-}
-

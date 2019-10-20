@@ -13,7 +13,6 @@ using namespace std;
 		this->_im = 0;
 		this->_re = 0;
 	}
-
 	Complex::Complex(double re, double im) {
 		this->_im = im;
 		this->_re = re;
@@ -64,7 +63,7 @@ using namespace std;
 	Complex Complex::operator * (const double& Num) {
 		Complex c;
 		c = *this;
-		c.multReal(Num);
+		c.mult(Num);
 		return c;
 	}
 	Complex Complex::operator / (const double& Num) {
@@ -79,7 +78,7 @@ using namespace std;
 	Complex Complex::operator + (const double& Num) {
 		Complex c;
 		c = *this;
-		c.addReal(Num);
+		c.add(Num);
 		return c;
 	}
 	Complex Complex::operator = (const double& Num) {
@@ -112,38 +111,38 @@ using namespace std;
 		_im = futureIm;
 	}
 
-	void Complex::subCompex(const Complex &comNum) {
-		*this = *this + comNum;
+	void Complex::sub(const Complex &comNum) {
+		*this = *this - comNum;
 	} 
-	void Complex::addComplex(const Complex &comNum) {
+	void Complex::add(const Complex &comNum) {
 		this->_im += comNum.getIm();
 		_re += comNum.getRe();
 	} 
-	void Complex::multComplex(const Complex &comNum) {
+	void Complex::mult(const Complex &comNum) {
 		Complex c = *this;
 		c._im = this->_re * comNum.getIm() + this->_im * comNum.getRe();
 		c._re = this->_re * comNum.getRe() - this->_im * comNum.getIm();
 		*this = c;
 	} 
 
- 	void Complex::subReal(const double& realNum) {
+ 	void Complex::sub(const double& realNum) {
 		_re -= realNum;
 	} 
-	void Complex::addReal(const double& realNum) {
+	void Complex::add(const double& realNum) {
 		this->_re += realNum;
 	} 
-	void Complex::multReal(const double& realNum) {
+	void Complex::mult	(const double& realNum) {
 		_re *= realNum;
 		_im *= realNum;
 	}
 
 	double Complex::abs() const{
-		double a = sqrt(pow(_im, 2) + pow(_re, 2));
+		double a = floor(sqrt(pow(_im, 2) + pow(_re, 2)) * 100) / 100;
 		return  a;
 	} 
 	double Complex::arg() {
 		const double PI = 3.14159265;
-		double  argument = atan(this->_im / this->_re) * 180 / PI;
+		double  argument = floor(atan(this->_im / this->_re) * 180 / PI * 100) / 100;
 		return argument;
 	}
 	

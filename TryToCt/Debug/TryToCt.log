@@ -1,2 +1,5 @@
-﻿  TryToCt.cpp
-  TryToCt.vcxproj -> C:\Users\crash\Desktop\oop\Classes\TryToCt\Debug\TryToCt.exe
+﻿  complex1.cpp
+  TryToCt.cpp
+  Создание кода...
+TryToCt.obj : error LNK2019: ёё√ыър эр эхЁрчЁх°хээ√щ тэх°эшщ ёшьтюы "void __cdecl test_ComplexClass_all(void)" (?test_ComplexClass_all@@YAXXZ) т ЇєэъЎшш _main
+C:\Users\crash\Desktop\oop\Classes\TryToCt\Debug\TryToCt.exe : fatal error LNK1120: эхЁрчЁх°хээ√ї тэх°эшї ¤ыхьхэЄют: 1
