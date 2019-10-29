@@ -14,10 +14,13 @@ int main()
 {
 	test_ComplexClass_all();
 	const int size_arr = 10;
-	std::vector<Complex> a(size_arr);
+	std::vector<Complex*> a(size_arr);
+	for (int i = 0; i < size_arr; i++) {
+		a[i] = new Complex();
+	}
 	ofstream f("file.txt");
 	for (int i = 0; i < size_arr; i++) {
-		f << a[i].toString() << std::endl;
+		f << a[i]->toString() << std::endl;
 	}
 	f.close();
 
@@ -27,16 +30,19 @@ int main()
 	
 	for (int i = 0; i < size_arr; i++) {
 		out >> num;
-		a[i].setRe(num);
+		a[i]->setRe(num);
 		out >> str;
 		out >> num;
-		a[i].setIm(num);
+		a[i]->setIm(num);
 		out >> str;
 		out >> str;
-		cout << a[i].toString() << endl;
+		cout << a[i]->toString() << endl;
 	}
 	out.close();
 	
+	for (int i = 0; i < size_arr; i++) {
+		delete a[i];
+	}
 
 }
 

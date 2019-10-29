@@ -142,7 +142,19 @@ using namespace std;
 	} 
 	double Complex::arg() {
 		const double PI = 3.14159265;
-		double  argument = floor(atan(this->_im / this->_re) * 180 / PI * 100) / 100;
+		double argument;
+
+		if ((this->_re == 0 && this->_im > 0)) argument = 90;
+		else
+			if ((this->_re == 0 && this->_im < 0)) argument = 270;
+
+		if(this->_re > 0 || (this->_re > 0 && this->_im == 0))
+			argument = floor(atan(this->_im / this->_re) * 180 / PI * 100) / 100;
+		else
+			if(this->_im > 0 || (this->_re < 0 && this->_im == 0))
+				argument = floor(atan(this->_im / this->_re) * 180 / PI * 100) / 100 - 180;
+			else
+				argument = floor(atan(this->_im / this->_re) * 180 / PI * 100) / 100 + 180;
 		return argument;
 	}
 	

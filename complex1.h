@@ -22,7 +22,7 @@ public:
 	
 	Complex operator - (const Complex& comNum);
 	Complex operator / (const Complex& comNum);
-	Complex operator = (const Complex& comNum);
+	Complex operator = (const Complex& comNum);//todo: delete
 	Complex operator + (const Complex& comNum);
 	Complex operator * (const Complex& comNum);
 
