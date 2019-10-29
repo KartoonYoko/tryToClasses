@@ -1,3 +1,4 @@
-﻿  TryToCt.cpp
-TryToCt.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl test_ComplexClass_constructor(void)" (?test_ComplexClass_constructor@@YAXXZ) в функции _main
-C:\Users\crash\Desktop\oop\Classes\TryToCt\Debug\TryToCt.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
+﻿  test.cpp
+C:\Users\crash\Desktop\oop\Classes\TryToCt\Tests\test.cpp(77,27): warning C4101: e: неиспользованная локальная переменная
+C:\Users\crash\Desktop\oop\Classes\TryToCt\Tests\test.cpp(166,27): warning C4101: e: неиспользованная локальная переменная
+  TryToCt.vcxproj -> C:\Users\crash\Desktop\oop\Classes\TryToCt\Debug\TryToCt.exe

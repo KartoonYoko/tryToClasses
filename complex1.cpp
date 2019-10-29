@@ -57,7 +57,7 @@ using namespace std;
 
 	Complex Complex::operator - (const double& Num) {
 		Complex c = *this;
-		c.setRe(this->_re + Num);
+		c.setRe(this->_re - Num);
 		return c;
 	}
 	Complex Complex::operator * (const double& Num) {

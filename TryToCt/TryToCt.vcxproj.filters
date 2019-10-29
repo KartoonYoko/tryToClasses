@@ -21,9 +21,15 @@
     <ClCompile Include="..\complex1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\test.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\complex1.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\test.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

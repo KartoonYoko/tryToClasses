@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-	test_ComplexClass_constructor();
+	test_ComplexClass_all();
 	const int size_arr = 10;
 	std::vector<Complex> a(size_arr);
 	ofstream f("file.txt");
