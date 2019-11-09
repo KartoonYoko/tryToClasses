@@ -2,38 +2,56 @@
 
 #include <vector>
 
+/*
+	Класс матрица.
+*/
+
 
 using namespace std;
 
-class tryToMatrix
+enum MatrixException { InvalidValue, InvalidSize };
+
+typedef double VecType; // тип элементов матрицы(вектора)
+
+class MyMatrix
 {
 private: 
-	int _col = 1;
-	int _row = 1;
 
-	vector<vector<double>> matrix(1, vector<double>(1, 0));
+
+	vector<vector<VecType>> _matrix;
 
 public:
-	tryToMatrix() {
-		this->_col = 1;
-		this->_col = 1;
-	}
-	tryToMatrix(const int& row, const int& col) {
-		int diffCol = col - this->_col;
-		int diffRow = row - this->_row;
-		for(int j = 0; j < this->_row; j++)
-			for (int i = 0; i < diffCol; i++) {
-				this->matrix[j].push_back(0);
-			}
-		this->_col = col;
-		for (int j = 0; j < diffRow; j++) {
-			matrix.push_back(vector<double>(this->_col, 0));
-		}
-		this->_row = row;
-	}
-	tryToMatrix(const int& row, const int& col, const double& num) {
-		
-	}
 
+
+	MyMatrix(); // создает нулевую матрицу размера 1х1
+	MyMatrix(const int& row, const int& col); // создает нулевую матрицу размера row x col
+	MyMatrix(const int& row, const int& col, const VecType& num); // создает матрицу, заполненную числом num, размера row x col
+
+	int getCol() const;  // получить кол-во столбцов
+	int getRow() const; //  получить кол-во строк
+
+	void expand(const int& row, const int& col); // расширяет матрицу до оазмера row x col и заполняет новые ячейки нулями
+	void expand(const int& row, const int& col, const VecType& num); // расширяет матрицу до оазмера row x col и заполняет новые ячейки числом num
+
+
+
+	VecType operator ()(const VecType& row, const VecType& col) const;	// доступ к отдельным элементам матрицы
+
+
+
+	void fill(const VecType& num);	// заполнение матрицы одним значение
+	void fillRand();	// заполнение матрицы случайными числами
+	void fillRand(const int& fromNum, const int& lastNum);	// заполнение матрицы случайными числами от fromNum до lastNum, с десятичным остатком
+	// сложениме матриц
+	// вычитание матриц
+	// умножение на число
+	// умножение матрицы на матрицу
+	// транспонирование
+	// создание диагональной матрицы
+	// вычесление определителя
+	// доступ к строкам матрицы
+	// *=
+	// -=
+	// +=
 };
 

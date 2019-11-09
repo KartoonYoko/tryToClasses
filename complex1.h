@@ -1,7 +1,11 @@
 #pragma once
 
 #include <string>
-
+/*
+Класс комплексного числа.
+Позволяет складывать, вычитать, умножать, делить комплексное число с комплексным и действительным числом.
+Позволяет найти аргумент и модуль комплексного числа, а также преобразовать это число в строку.
+*/
 
 enum ComplexException { InvalidValue };
 
@@ -18,7 +22,7 @@ public:
 	Complex();
 	Complex(double re, double im);
 
-	void operator ++(int);
+	void operator ++(int); // увеличивает действительную часть на 1
 	
 	Complex operator - (const Complex& comNum);
 	Complex operator / (const Complex& comNum);

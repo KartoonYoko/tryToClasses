@@ -1,2 +1,5 @@
 ﻿  training.cpp
+C:\Users\crash\Desktop\oop\Classes\training\training.cpp(27,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\crash\Desktop\oop\Classes\training\training.cpp(28,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\training\training.cpp(29,21): warning C4018: <: несоответствие типов со знаком и без знака
   training.vcxproj -> C:\Users\crash\Desktop\oop\Classes\training\Debug\training.exe

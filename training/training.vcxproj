@@ -151,7 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\tryToMatrix.cpp" />
+    <ClCompile Include="testOfTryToMatrix\test_tryToMatrix.cpp" />
     <ClCompile Include="training.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\tryToMatrix.h" />
+    <ClInclude Include="testOfTryToMatrix\test_tryToMatrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

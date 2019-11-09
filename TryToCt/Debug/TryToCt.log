@@ -1,2 +1,7 @@
-﻿  TryToCt.cpp
+﻿  complex1.cpp
+  test.cpp
+C:\Users\crash\Desktop\oop\Classes\TryToCt\Tests\test.cpp(77,27): warning C4101: e: неиспользованная локальная переменная
+  TryToCt.cpp
+  Создание кода...
+C:\Users\crash\Desktop\oop\Classes\TryToCt\Tests\test.cpp(166,27): warning C4101: e: неиспользованная локальная переменная
   TryToCt.vcxproj -> C:\Users\crash\Desktop\oop\Classes\TryToCt\Debug\TryToCt.exe
