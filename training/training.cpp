@@ -14,22 +14,12 @@ int main()
 
 	test_ClassMyMatrix_all();
 	vector<vector<double>> matrix;
+	vector<vector<double>> matrix2(10, vector<double>(5, 1));
 	cout << matrix.size() << endl;
 	for(int i = 0; i < n; i++)
-		matrix.push_back(vector<double>(4, 0));
+		matrix.push_back(vector<double>(5, 2));
 	for (int i = 0; i < n; i++)
-		matrix.push_back(vector<double>(4, 0));
-	cout << matrix.size() << "  " << matrix[7].size() << endl;
-
-
-	int fromNum = 2;
-	int lastNum = 12;
-	srand(time(NULL));
-	for (int i = 0; i < matrix.size(); i++)
-		for (int j = 0; j < matrix[0].size(); j++) {
-			matrix[i][j] = 0.1 * (fromNum * 10 + rand() % ((lastNum - fromNum) * 10 + 1));
-			cout << matrix[i][j] << "   ";
-		}
-
+		matrix.push_back(vector<double>(5, 3));
+	
 }
 

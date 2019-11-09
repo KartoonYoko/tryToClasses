@@ -35,15 +35,17 @@ public:
 
 
 
-	VecType operator ()(const VecType& row, const VecType& col) const;	// доступ к отдельным элементам матрицы
+	VecType& operator ()(const VecType& row, const VecType& col);	// доступ к отдельным элементам матрицы
+
 
 
 
 	void fill(const VecType& num);	// заполнение матрицы одним значение
 	void fillRand();	// заполнение матрицы случайными числами
 	void fillRand(const int& fromNum, const int& lastNum);	// заполнение матрицы случайными числами от fromNum до lastNum, с десятичным остатком
-	// сложениме матриц
-	// вычитание матриц
+	void operator =(const MyMatrix &rightMatrix); // толко для одноразмерных матриц
+	MyMatrix operator +(const MyMatrix& rightMatrix);// сложениме матриц
+	MyMatrix operator -(const MyMatrix& rightMatrix);// вычитание матриц
 	// умножение на число
 	// умножение матрицы на матрицу
 	// транспонирование
