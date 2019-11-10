@@ -5,20 +5,26 @@ C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(41,22): warning C4018: <: н�
 C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(51,22): warning C4018: >=: несоответствие типов со знаком и без знака
 C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(51,50): warning C4018: >=: несоответствие типов со знаком и без знака
 C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(55,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(69,19): warning C4244: аргумент: преобразование "const VecType" в "const unsigned int", возможна потеря данных
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(69,24): warning C4244: аргумент: преобразование "const VecType" в "const unsigned int", возможна потеря данных
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(76,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(77,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(83,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(84,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(85,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(91,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(92,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(69,18): warning C4244: аргумент: преобразование "const VecType" в "const unsigned int", возможна потеря данных
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(69,23): warning C4244: аргумент: преобразование "const VecType" в "const unsigned int", возможна потеря данных
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(75,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(76,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(82,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(83,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(84,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(90,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(91,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(92,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(100,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(101,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(102,40): error C3848: выражение с типом "const MyMatrix" потеряет некоторые квалификаторы const или volatile при вызове "VecType &MyMatrix::operator ()(const VecType &,const VecType &)"
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(111,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(112,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(113,22): error C2100: недопустимое косвенное обращение
+  test_tryToMatrix.cpp
+C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(113,58): error C3848: выражение с типом "const MyMatrix" потеряет некоторые квалификаторы const или volatile при вызове "VecType &MyMatrix::operator ()(const VecType &,const VecType &)"
+C:\Users\crash\Desktop\oop\Classes\training\testOfTryToMatrix\test_tryToMatrix.cpp(36,27): warning C4101: e: неиспользованная локальная переменная
+C:\Users\crash\Desktop\oop\Classes\training\testOfTryToMatrix\test_tryToMatrix.cpp(45,27): warning C4101: e: неиспользованная локальная переменная
   training.cpp
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(93,22): warning C4018: <: несоответствие типов со знаком и без знака
   Создание кода...
-C:\Users\crash\Desktop\oop\Classes\training\training.cpp(23,20): error C2676: бинарный "+": "std::vector<std::vector<VecType,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
-C:\Users\crash\Desktop\oop\Classes\training\training.cpp(23,20): error C2676:         with
-C:\Users\crash\Desktop\oop\Classes\training\training.cpp(23,20): error C2676:         [
-C:\Users\crash\Desktop\oop\Classes\training\training.cpp(23,20): error C2676:             _Ty=VecType
-C:\Users\crash\Desktop\oop\Classes\training\training.cpp(23,20): error C2676:         ]
+C:\Users\crash\Desktop\oop\Classes\training\testOfTryToMatrix\test_tryToMatrix.cpp(76,27): warning C4101: e: неиспользованная локальная переменная

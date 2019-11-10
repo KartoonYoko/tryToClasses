@@ -34,9 +34,14 @@ public:
 	void expand(const int& row, const int& col, const VecType& num); // расшир€ет матрицу до оазмера row x col и заполн€ет новые €чейки числом num
 
 
+	// доступ к отдельным элементам матрицы
+	VecType getItem(const int& row, const int& col) const;	// вернет элемент матрицы на позицию row x col
+	void setItem(const int& row, const int& col, const VecType& num); // внесет num в матрицу на позицию row x col
+	VecType& operator ()(const int& row, const int& col);	// вернет адрес элемента матрицы row x col (дл€ быстрого внесени€ значени€ в матрицу)
 
-	VecType& operator ()(const VecType& row, const VecType& col);	// доступ к отдельным элементам матрицы
 
+	// доступ к строкам матрицы
+	vector<VecType>& operator [](const VecType& index);
 
 
 
@@ -51,7 +56,6 @@ public:
 	// транспонирование
 	// создание диагональной матрицы
 	// вычесление определител€
-	// доступ к строкам матрицы
 	// *=
 	// -=
 	// +=
