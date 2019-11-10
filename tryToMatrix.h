@@ -36,7 +36,7 @@ public:
 	// доступ к отдельным элементам матрицы
 	VecType getItem(const int& row, const int& col) const;	// вернет элемент матрицы на позицию row x col
 	void setItem(const int& row, const int& col, const VecType& num); // внесет num в матрицу на позицию row x col
-	VecType& operator ()(const int& row, const int& col);	// вернет адрес элемента матрицы row x col (для быстрого внесения значения в матрицу)
+	VecType& operator ()(const int& row, const int& col);	// вернет элемент матрицы row x col по ссылке (для быстрого внесения значения в матрицу)
 
 	// доступ к строкам матрицы
 	vector<VecType> operator [](const int& index);
@@ -52,6 +52,7 @@ public:
 	MyMatrix operator *(const VecType& num); // умножение на число
 	MyMatrix operator *(const MyMatrix& rightMatrix); // умножение матрицы на матрицу
 	void operator *=(const MyMatrix& rightMatrix);
+	void operator *=(const VecType& num);
 	void operator -=(const MyMatrix& rightMatrix);
 	void operator +=(const MyMatrix& rightMatrix);
 
@@ -59,12 +60,6 @@ public:
 	void diag();// создание диагональной матрицы
 	double determinant();// вычесление определителя
 	
-	
-
-
-
-
-
 	void outputConsole();// вывод матрицы в консоль
 };
 

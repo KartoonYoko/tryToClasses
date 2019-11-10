@@ -145,4 +145,8 @@ using namespace std;
 		test_ClassMyMatrix_MatrixMultMatrix();
 		test_ClassMatrix_transpose();
 		test_ClassMatrix_determinant();
+
+
+
+		cout << "_________________________________test_ClassMyMatrix_all OK!" << endl << endl << endl;
 	}

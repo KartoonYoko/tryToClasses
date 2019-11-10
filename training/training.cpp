@@ -10,23 +10,49 @@ using namespace std;
 
 int main()
 {
-	const int n = 5;
-
 	test_ClassMyMatrix_all();
-	vector<vector<double>> matrix;
-	vector<vector<double>> matrix2(10, vector<double>(5, 1));
-	cout << matrix.size() << endl;
-	for(int i = 0; i < n; i++)
-		matrix.push_back(vector<double>(5, 2));
-	for (int i = 0; i < n; i++)
-		matrix.push_back(vector<double>(5, 3));
-
 
 	MyMatrix a(2, 2, 1);
 	a(0, 1) = 2;
 	a(1, 0) = 3;
 	a(1, 1) = 4;
+	a.outputConsole();
+
+	// Нахождение определителя
+	cout << endl << "double result = a.determinant();" << endl;
 	double result = a.determinant();
-	cout << result;
+	cout << result << endl;
+
+
+	// Заполнение матрицы случайными числами
+	cout << endl << "a.fillRand(15, 28);" << endl;
+	a.fillRand(15, 28);
+	a.outputConsole();
+
+	// Сложение, умножение, вычитание матриц
+	MyMatrix b(2, 2, 1), c(2, 2);
+	cout << endl << "a + b" << endl;
+	c = a + b;
+	c.outputConsole();
+
+	cout << endl << "a - b" << endl;
+	c = a - b;
+	c.outputConsole();
+
+	cout << endl << "a * b" << endl;
+	c = a * b;
+	c.outputConsole();
+
+
+	// Транспонирование матрицы
+	cout << endl << "a.transpose();" << endl;
+	a.transpose();
+	a.outputConsole();
+
+	// Создание дигональной матрицы
+	cout << endl << "a.diag();" << endl;
+	a.diag();
+	a.outputConsole();
+
 }
 

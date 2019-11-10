@@ -160,6 +160,7 @@
 			}
 		return result;
 	}
+	void MyMatrix::operator *=(const VecType& num) { *this = (*this) * num; }
 	// умножение матрицы на матрицу
 	MyMatrix MyMatrix::operator *(const MyMatrix& rightMatrix) {
 		if (this->getCol() != rightMatrix.getRow()) throw InvalidSize;
@@ -201,11 +202,9 @@
 		else if (this->getCol() == 1) return this->getItem(0, 0);
 		else {
 
-
 			double sum = 0;
 
 			for (int i = 0; i < this->getCol(); i++) {
-
 
 				/*Создание матрицы для определения минора*/
 				MyMatrix buf(this->getRow() - 1, this->getCol() - 1);
@@ -233,6 +232,7 @@
 							buf(i1, j1) = this->getItem(i1 + 1, j1 + 1);
 						}
 				}
+
 				/*Cумма произведений элементов ПЕРВОЙ строки на соответствующие алгебраические дополнения*/
 				sum += this->getItem(0, i) * pow(-1, i) * buf.determinant();
 			}
