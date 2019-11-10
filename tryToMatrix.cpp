@@ -1,5 +1,6 @@
 #include "tryToMatrix.h"
 #include <ctime>
+#include <iostream>
 
 
 
@@ -32,7 +33,7 @@
 		return _matrix.size();
 	}
 
-
+	// расширяет матрицу до размера row x col
 	void MyMatrix::expand(const int& row, const int& col) {
 		if (_matrix.size() >= row && _matrix[0].size() >= col) throw InvalidSize;
 		else {
@@ -100,21 +101,25 @@
 			}
 	}
 	// заполнение матрицы случайными числами от fromNum до lastNum, с десятичным остатком
-	void MyMatrix::fillRand(const int & fromNum, const int& lastNum) {
+	void MyMatrix::fillRand(const int& fromNum, const int& lastNum) {
 		srand(time(NULL));
-		for (int i = 0; i < _matrix.size(); i++)
-			for (int j = 0; j < _matrix[0].size(); j++) {
+		for (int i = 0; i < this->getRow(); i++)
+			for (int j = 0; j < this->getCol(); j++) {
 				_matrix[i][j] = 0.1 * (fromNum * 10 + rand() % ((lastNum - fromNum) * 10 + 1));
 			}
 	}
+	
+	
 	// доступ к строкам матрицы
-	vector<VecType>& operator [](const VecType& index) { return _matrix[index]	}
+	vector<VecType> MyMatrix::operator [](const int& index) { return _matrix[index]; }
+
+	
 	void MyMatrix::operator =(const MyMatrix& rightMatrix) {
 		if ((_matrix.size() != rightMatrix.getRow()) && (_matrix[0].size() != rightMatrix.getCol())) throw InvalidSize;
 		else {
 			for (int i = 0; i < _matrix.size(); i++)
 				for (int j = 0; j < _matrix[0].size(); j++) {
-					_matrix[i][j] = *(rightMatrix(i, j));
+					_matrix[i][j] = rightMatrix.getItem(i, j);
 				}
 		}
 	}
@@ -125,21 +130,72 @@
 			MyMatrix result(rightMatrix.getRow(), rightMatrix.getCol());
 			for (int i = 0; i < _matrix.size(); i++)
 				for (int j = 0; j < _matrix[0].size(); j++) {
-					*(result(i, j)) = _matrix[i][j] + *(rightMatrix(i, j));
+					result(i, j) = _matrix[i][j] + rightMatrix.getItem(i, j);
 				}
 			return result;
 		}
 	}
 	// вычитание матриц
+	MyMatrix MyMatrix::operator -(const MyMatrix& rightMatrix) {
+		if ((_matrix.size() != rightMatrix.getRow()) && (_matrix[0].size() != rightMatrix.getCol())) throw InvalidSize;
+		else {
+			MyMatrix result(rightMatrix.getRow(), rightMatrix.getCol());
+			for (int i = 0; i < _matrix.size(); i++)
+				for (int j = 0; j < _matrix[0].size(); j++) {
+					result(i, j) = _matrix[i][j] - rightMatrix.getItem(i, j);
+				}
+			return result;
+		}
+	}
+
+
 	// умножение на число
+	MyMatrix MyMatrix::operator *(const VecType& num) {
+		MyMatrix result(this->getRow(), this->getCol());
+		for (int i = 0; i < _matrix.size(); i++)
+			for (int j = 0; j < _matrix[0].size(); j++) {
+				result(i, j) = _matrix[i][j] * num;
+			}
+		return result;
+	}
 	// умножение матрицы на матрицу
+	MyMatrix MyMatrix::operator *(const MyMatrix& rightMatrix) {
+		if (this->getCol() != rightMatrix.getRow()) throw InvalidSize;
+		else {
+			MyMatrix result(this->getRow(), rightMatrix.getCol());
+			for (int i = 0; i < result.getRow(); i++)
+				for (int j = 0; j < result.getCol(); j++) {
+
+					for (int k = 0; k < this->getCol(); k++) {
+						result(i, j) = result(i, j) + (this->getItem(i, k) * rightMatrix.getItem(k, j));
+					} 
+				}
+			return result;
+		}
+	}
+	
 	// транспонирование
+	void MyMatrix::transpose() {
+
+		MyMatrix buf(this->getRow(), this->getCol());
+		for (int i = 0; i < this->getRow(); i++)
+			for (int j = 0; j < this->getCol(); j++) {
+				buf(j, i) = this->getItem(i, j);
+			}
+		*this = buf;
+	}
 	// создание диагональной матрицы
 	// вычесление определителя
-	// доступ к строкам матрицы
+	
 	// *=
 	// -=
 	// +=
 
-
+	void MyMatrix::outputConsole() {
+		for (int i = 0; i < this->getRow(); i++)
+			for (int j = 0; j < this->getCol(); j++) {
+				if (j == (this->getCol() - 1)) std::cout << this->getItem(i, j) << std::endl;
+				else std::cout << this->getItem(i, j) << "	";
+			}
+	}
 

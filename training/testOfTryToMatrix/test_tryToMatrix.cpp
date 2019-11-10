@@ -79,10 +79,50 @@ using namespace std;
 
 		cout << "test_ClassMyMatrix_expand OK" << endl;
 	}
+	void test_ClassMyMatrix_MatrixMultMatrix() {
+		{
+			try
+			{
+				MyMatrix a(3, 2), b(3, 2);
+				MyMatrix result = a * b;
+				assert(0 && "dont catch exeption");
+			}
+			catch (MatrixException e) { ; }
+		}
+
+
+		{
+			MyMatrix a(3, 2, 2), b(2, 2, 4);
+			MyMatrix result = a * b;
+			assert((result.getRow() == 3) && (result.getCol() == 2) &&  (result.getItem(0, 0) == 16) &&"");
+		}
+
+
+		cout << "test_ClassMyMatrix_MatrixMultMatrix OK" << endl;
+	}
+	void test_ClassMatrix_transpose() {
+		
+		{
+			MyMatrix a(2, 2, 4);
+			a(0, 0) = 2;
+			a(0, 1) = 3;
+			a(1, 0) = 5;
+			a.outputConsole();
+			cout << endl << "_____________" << endl ;
+			a.transpose();
+			a.outputConsole();
+		}
+
+
+
+		cout << "test_ClassMatrix_transpose OK" << endl;
+	}
 
 
 	void test_ClassMyMatrix_all() {
 		test_ClassMyMatrix_constructor();
 		test_ClassMyMatrix_fill();
 		test_ClassMyMatrix_expand();
+		test_ClassMyMatrix_MatrixMultMatrix();
+		test_ClassMatrix_transpose();
 	}
