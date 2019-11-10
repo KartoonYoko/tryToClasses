@@ -135,6 +135,7 @@
 			return result;
 		}
 	}
+	void MyMatrix::operator +=(const MyMatrix& rightMatrix) { *this = *this + rightMatrix; }
 	// вычитание матриц
 	MyMatrix MyMatrix::operator -(const MyMatrix& rightMatrix) {
 		if ((_matrix.size() != rightMatrix.getRow()) && (_matrix[0].size() != rightMatrix.getCol())) throw InvalidSize;
@@ -148,7 +149,7 @@
 		}
 	}
 	void MyMatrix::operator -=(const MyMatrix& rightMatrix) { *this = *this - rightMatrix; }
-	void MyMatrix::operator +=(const MyMatrix& rightMatrix) { *this = *this + rightMatrix; }
+	
 
 	// умножение на число
 	MyMatrix MyMatrix::operator *(const VecType& num) {
@@ -197,8 +198,47 @@
 	// вычесление определителя
 	double MyMatrix::determinant() {
 		if (this->getCol() != this->getRow()) throw InvalidSize;
+		else if (this->getCol() == 1) return this->getItem(0, 0);
 		else {
 
+
+			double sum = 0;
+
+			for (int i = 0; i < this->getCol(); i++) {
+
+
+				/*Создание матрицы для определения минора*/
+				MyMatrix buf(this->getRow() - 1, this->getCol() - 1);
+				
+				if ((i != 0) && (i != this->getCol() - 1)) {
+					///////
+					for (int i1 = 0; i1 < buf.getRow(); i1++)
+						for (int j1 = 0; j1 < i; j1++) {
+							buf(i1, j1) = this->getItem(i1 + 1, j1);
+						}
+					for (int i1 = 0; i1 < buf.getRow(); i1++)
+						for (int j1 = i + 1; j1 < buf.getCol(); j1++) {
+							buf(i1, j1) = this->getItem(i1 + 1, j1); 
+						}
+				}  //////
+				else if (i != 0) { // if (i == this->getCol() - 1) // последняя итерация
+					for (int i1 = 0; i1 < buf.getRow(); i1++)
+						for (int j1 = 0; j1 < buf.getCol(); j1++) {
+							buf(i1, j1) = this->getItem(i1 + 1, j1);
+						}
+				}
+				else {
+					for (int i1 = 0; i1 < buf.getRow(); i1++)		// if (i == 0) // первая итерация
+						for (int j1 = 0; j1 < buf.getCol(); j1++) {
+							buf(i1, j1) = this->getItem(i1 + 1, j1 + 1);
+						}
+				}
+				/*Cумма произведений элементов ПЕРВОЙ строки на соответствующие алгебраические дополнения*/
+				sum += this->getItem(0, i) * pow(-1, i) * buf.determinant();
+			}
+
+
+			return sum;
 		}
 	}
 	

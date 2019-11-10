@@ -20,6 +20,13 @@ int main()
 		matrix.push_back(vector<double>(5, 2));
 	for (int i = 0; i < n; i++)
 		matrix.push_back(vector<double>(5, 3));
-	
+
+
+	MyMatrix a(2, 2, 1);
+	a(0, 1) = 2;
+	a(1, 0) = 3;
+	a(1, 1) = 4;
+	double result = a.determinant();
+	cout << result;
 }
 

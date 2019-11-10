@@ -1,22 +1,2 @@
-﻿  tryToMatrix.cpp
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(38,22): warning C4018: >=: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(38,50): warning C4018: >=: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(42,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(52,22): warning C4018: >=: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(52,50): warning C4018: >=: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(56,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(90,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(91,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(97,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(98,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(99,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(105,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(120,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(121,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(131,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(132,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(143,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(144,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(155,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\crash\Desktop\oop\Classes\tryToMatrix.cpp(156,22): warning C4018: <: несоответствие типов со знаком и без знака
+﻿  training.cpp
   training.vcxproj -> C:\Users\crash\Desktop\oop\Classes\training\Debug\training.exe

@@ -117,7 +117,26 @@ using namespace std;
 
 		cout << "test_ClassMatrix_transpose OK" << endl;
 	}
+	void test_ClassMatrix_determinant() {
+	
+		{
+			MyMatrix a(2, 2, 3);
+			double result = a.determinant();
+			assert((result == 0) && "double result = a.determinant();");
+		}
 
+		{
+			MyMatrix a(2, 2, 1);
+			a(0, 1) = 2;
+			a(1, 0) = 3;
+			a(1, 1) = 4;
+			double result = a.determinant();
+			assert((result == -2) && "double result = a.determinant();");
+		}
+
+
+		cout << "test_ClassMatrix_determinant OK" << endl;
+	}
 
 	void test_ClassMyMatrix_all() {
 		test_ClassMyMatrix_constructor();
@@ -125,4 +144,5 @@ using namespace std;
 		test_ClassMyMatrix_expand();
 		test_ClassMyMatrix_MatrixMultMatrix();
 		test_ClassMatrix_transpose();
+		test_ClassMatrix_determinant();
 	}
