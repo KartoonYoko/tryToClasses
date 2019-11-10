@@ -51,13 +51,15 @@ public:
 	MyMatrix operator -(const MyMatrix& rightMatrix); // вычитание матриц
 	MyMatrix operator *(const VecType& num); // умножение на число
 	MyMatrix operator *(const MyMatrix& rightMatrix); // умножение матрицы на матрицу
+	void operator *=(const MyMatrix& rightMatrix);
+	void operator -=(const MyMatrix& rightMatrix);
+	void operator +=(const MyMatrix& rightMatrix);
 
 	void transpose();// транспонирование текущей матрицы
-	// создание диагональной матрицы
-	// вычесление определителя
-	// *=
-	// -=
-	// +=
+	void diag();// создание диагональной матрицы
+	double determinant();// вычесление определителя
+	
+	
 
 
 

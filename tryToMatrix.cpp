@@ -147,7 +147,8 @@
 			return result;
 		}
 	}
-
+	void MyMatrix::operator -=(const MyMatrix& rightMatrix) { *this = *this - rightMatrix; }
+	void MyMatrix::operator +=(const MyMatrix& rightMatrix) { *this = *this + rightMatrix; }
 
 	// умножение на число
 	MyMatrix MyMatrix::operator *(const VecType& num) {
@@ -173,7 +174,8 @@
 			return result;
 		}
 	}
-	
+	void MyMatrix::operator *=(const MyMatrix& rightMatrix) { *this = (*this) * rightMatrix;	}
+
 	// транспонирование
 	void MyMatrix::transpose() {
 
@@ -184,12 +186,22 @@
 			}
 		*this = buf;
 	}
-	// создание диагональной матрицы
-	// вычесление определителя
 	
-	// *=
-	// -=
-	// +=
+	// создание диагональной матрицы
+	void MyMatrix::diag() {
+		for (int i = 0; i < this->getRow(); i++)
+			for (int j = 0; j < this->getCol(); j++) {
+				if (i != j) this->setItem(i, j, 0);
+			}
+	}
+	// вычесление определителя
+	double MyMatrix::determinant() {
+		if (this->getCol() != this->getRow()) throw InvalidSize;
+		else {
+
+		}
+	}
+	
 
 	void MyMatrix::outputConsole() {
 		for (int i = 0; i < this->getRow(); i++)
