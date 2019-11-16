@@ -111,7 +111,7 @@
 	
 	
 	// доступ к строкам матрицы
-	vector<VecType> MyMatrix::operator [](const int& index) { return _matrix[index]; }
+	vector<VecType>& MyMatrix::operator [](const int& index) { return _matrix[index]; }
 
 	
 	void MyMatrix::operator =(const MyMatrix& rightMatrix) {
@@ -188,7 +188,17 @@
 			}
 		*this = buf;
 	}
-	
+	// транспонирование матрицы, результат в matrix
+	void MyMatrix::transpose(MyMatrix& matrix) {
+		if ((this->getRow() != matrix.getRow()) && (this->getCol() != matrix.getCol())) throw InvalidSize;
+		else
+		{
+			for (int i = 0; i < this->getRow(); i++)
+				for (int j = 0; j < this->getCol(); j++) {
+					matrix(j, i) = this->getItem(i, j);
+				}
+		}
+	}
 	// создание диагональной матрицы
 	void MyMatrix::diag() {
 		for (int i = 0; i < this->getRow(); i++)
@@ -233,7 +243,7 @@
 						}
 				}
 
-				/*Cумма произведений элементов ПЕРВОЙ строки на соответствующие алгебраические дополнения*/
+				/*Cумма произведений элементов ПЕРВОЙ строки на соответствующии алгебраические дополнения*/
 				sum += this->getItem(0, i) * pow(-1, i) * buf.determinant();
 			}
 
@@ -241,7 +251,24 @@
 			return sum;
 		}
 	}
-	
+	// возвращает обратную матрицу
+	MyMatrix MyMatrix::invertMatrix() {
+
+
+		if ((this->determinant() == 0) || (this->getCol() != this->getRow())) throw InvalidValue;
+		else {
+			MyMatrix result(this->getRow(), this->getCol());
+			MyMatrix transp(this->getRow(), this->getCol());
+			for (int i = 0; i < this->getRow(); i++)
+				for (int j = 0; j < this->getRow(); j++) {
+					transp(i, j) = findAlgComp(*this, i, j);
+				}
+			transp.transpose();
+
+			result = transp * (1 / this->determinant());
+			return result;
+		}
+	}
 
 	void MyMatrix::outputConsole() {
 		for (int i = 0; i < this->getRow(); i++)

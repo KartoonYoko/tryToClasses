@@ -14,6 +14,8 @@ int main()
 
 	setlocale(LC_ALL, "Russian");
 
+	int i2 = 3; const int *const p3 = &i2;
+
 	MyMatrix a(2, 2, 1);
 	a(0, 1) = 2;
 	a(1, 0) = 3;

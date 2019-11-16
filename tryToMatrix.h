@@ -12,6 +12,7 @@
 		- транспонирование
 		- создание диагональной матрицы из текущей
 		- нахождение определителя
+		- нахождение обратной матрицы
 */
 
 
@@ -28,6 +29,26 @@ private:
 
 	vector<vector<VecType>> _matrix;
 
+	// для нахождения алгебраического дополнения(понадобится в методе invertMatrix)
+	VecType findAlgComp(const MyMatrix& matrix, const int& row, const int& col) {
+		MyMatrix buf(matrix.getRow() - 1, matrix.getCol() - 1);
+		VecType result = 0;
+		int i1 = 0, j1 = 0;
+		for (int i = 0; i < matrix.getRow(); i++)
+			for (int j = 0; j < matrix.getRow(); j++) {
+				if ((i != row) && (j != col)) {
+					buf(i1, j1) = matrix.getItem(i, j);
+					if (j1 == matrix.getCol() - 1) {
+						j1 = 0;
+						if (i1 == matrix.getRow() - 1) i1 = 0; else i1++;
+					}
+					else j1++;
+				}
+			}
+		result = buf.determinant() * pow(-1, (row + col));
+		return result;
+	}
+
 public:
 
 
@@ -41,13 +62,13 @@ public:
 	void expand(const int& row, const int& col); // расширяет матрицу до размера row x col и заполняет новые ячейки нулями
 	void expand(const int& row, const int& col, const VecType& num); // расширяет матрицу до оазмера row x col и заполняет новые ячейки числом num
 
-	// доступ к отдельным элементам матрицы
-	VecType getItem(const int& row, const int& col) const;	// вернет элемент матрицы на позицию row x col
+	// доступ к отдельным элементам матрицы (отсчет начинается с нуля!)
+	VecType getItem(const int& row, const int& col) const;	// вернет элемент матрицы с позиции row x col
 	void setItem(const int& row, const int& col, const VecType& num); // внесет num в матрицу на позицию row x col
 	VecType& operator ()(const int& row, const int& col);	// вернет элемент матрицы row x col по ссылке (для быстрого внесения значения в матрицу)
 
 	// доступ к строкам матрицы
-	vector<VecType> operator [](const int& index);
+	vector<VecType>& operator [](const int& index);
 
 	// заполнение матрицы
 	void fill(const VecType& num);	// заполнение матрицы одним значение
@@ -65,8 +86,10 @@ public:
 	void operator +=(const MyMatrix& rightMatrix);
 
 	void transpose();// транспонирование текущей матрицы
+	void transpose(MyMatrix& matrix);// транспонирование матрицы, результат в matrix
 	void diag();// создание диагональной матрицы
 	double determinant();// вычесление определителя
+	MyMatrix invertMatrix(); // возвращает обратную матрицу
 	
 	void outputConsole();// вывод матрицы в консоль
 };
