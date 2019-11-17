@@ -29,18 +29,21 @@ private:
 
 	vector<vector<VecType>> _matrix;
 
-	// дл€ нахождени€ алгебраического дополнени€(понадобитс€ в методе invertMatrix)
-	VecType findAlgComp(const MyMatrix& matrix, const int& row, const int& col) {
+	/*
+		ƒл€ нахождени€ алгебраического дополнени€(понадобитс€ в методе invertMatrix)
+	»щет в матрице matrix алгебраическое дополнение дл€ row x col элемента
+	*/
+	double findAlgComp(const MyMatrix& matrix, const int& row, const int& col) {
 		MyMatrix buf(matrix.getRow() - 1, matrix.getCol() - 1);
-		VecType result = 0;
+		double result = 0;
 		int i1 = 0, j1 = 0;
 		for (int i = 0; i < matrix.getRow(); i++)
 			for (int j = 0; j < matrix.getRow(); j++) {
 				if ((i != row) && (j != col)) {
 					buf(i1, j1) = matrix.getItem(i, j);
-					if (j1 == matrix.getCol() - 1) {
+					if (j1 == matrix.getCol() - 2) {
 						j1 = 0;
-						if (i1 == matrix.getRow() - 1) i1 = 0; else i1++;
+						if (i1 == matrix.getRow() - 2) i1 = 0; else i1++;
 					}
 					else j1++;
 				}
@@ -62,7 +65,7 @@ public:
 	void expand(const int& row, const int& col); // расшир€ет матрицу до размера row x col и заполн€ет новые €чейки нул€ми
 	void expand(const int& row, const int& col, const VecType& num); // расшир€ет матрицу до оазмера row x col и заполн€ет новые €чейки числом num
 
-	// доступ к отдельным элементам матрицы (отсчет начинаетс€ с нул€!)
+	// доступ к отдельным элементам матрицы (отсчет начинаетс€ с нул€)
 	VecType getItem(const int& row, const int& col) const;	// вернет элемент матрицы с позиции row x col
 	void setItem(const int& row, const int& col, const VecType& num); // внесет num в матрицу на позицию row x col
 	VecType& operator ()(const int& row, const int& col);	// вернет элемент матрицы row x col по ссылке (дл€ быстрого внесени€ значени€ в матрицу)

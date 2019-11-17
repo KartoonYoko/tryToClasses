@@ -115,7 +115,7 @@
 
 	
 	void MyMatrix::operator =(const MyMatrix& rightMatrix) {
-		if ((_matrix.size() != rightMatrix.getRow()) && (_matrix[0].size() != rightMatrix.getCol())) throw InvalidSize;
+		if ((this->getRow() != rightMatrix.getRow()) && (this->getCol() != rightMatrix.getCol())) throw InvalidSize;
 		else {
 			for (int i = 0; i < _matrix.size(); i++)
 				for (int j = 0; j < _matrix[0].size(); j++) {
@@ -220,14 +220,14 @@
 				MyMatrix buf(this->getRow() - 1, this->getCol() - 1);
 				
 				if ((i != 0) && (i != this->getCol() - 1)) {
-					///////
+					/////// i1 - счетчик строк, j1 - счетчик столбцов
 					for (int i1 = 0; i1 < buf.getRow(); i1++)
 						for (int j1 = 0; j1 < i; j1++) {
 							buf(i1, j1) = this->getItem(i1 + 1, j1);
 						}
 					for (int i1 = 0; i1 < buf.getRow(); i1++)
-						for (int j1 = i + 1; j1 < buf.getCol(); j1++) {
-							buf(i1, j1) = this->getItem(i1 + 1, j1); 
+						for (int j1 = i; j1 < buf.getCol(); j1++) {
+							buf(i1, j1) = this->getItem(i1 + 1, j1 + 1); 
 						}
 				}  //////
 				else if (i != 0) { // if (i == this->getCol() - 1) // последняя итерация
@@ -244,7 +244,11 @@
 				}
 
 				/*Cумма произведений элементов ПЕРВОЙ строки на соответствующии алгебраические дополнения*/
+				double ch = this->getItem(0, i);
+				int asd = pow(-1, i);
+				double dete = buf.determinant();
 				sum += this->getItem(0, i) * pow(-1, i) * buf.determinant();
+				
 			}
 
 
@@ -254,18 +258,17 @@
 	// возвращает обратную матрицу
 	MyMatrix MyMatrix::invertMatrix() {
 
-
+		// определитель > 0, матрица должна быть квадратная
 		if ((this->determinant() == 0) || (this->getCol() != this->getRow())) throw InvalidValue;
 		else {
 			MyMatrix result(this->getRow(), this->getCol());
-			MyMatrix transp(this->getRow(), this->getCol());
 			for (int i = 0; i < this->getRow(); i++)
 				for (int j = 0; j < this->getRow(); j++) {
-					transp(i, j) = findAlgComp(*this, i, j);
+					result(i, j) = findAlgComp(*this, i, j);
 				}
-			transp.transpose();
+			result.transpose();
 
-			result = transp * (1 / this->determinant());
+			result *= (1 / this->determinant());
 			return result;
 		}
 	}
