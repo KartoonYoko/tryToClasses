@@ -94,7 +94,7 @@ using namespace std;
 		{
 			MyMatrix a(3, 2, 2), b(2, 2, 4);
 			MyMatrix result = a * b;
-			assert((result.getRow() == 3) && (result.getCol() == 2) &&  (result.getItem(0, 0) == 16) &&"");
+			assert((result.getRowCount() == 3) && (result.getColCount() == 2) &&  (result.getItem(0, 0) == 16) &&"");
 		}
 
 

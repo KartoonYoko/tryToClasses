@@ -5,6 +5,7 @@
 #include "../tryToMatrix.h"
 #include "testOfTryToMatrix/test_tryToMatrix.h"
 #include <vector>
+#include <math.h>
 #include <ctime>
 using namespace std;
 
@@ -79,5 +80,22 @@ int main()
 	a.fillRand(15, 28);
 	a.outputConsole();
 
+	// Обратная матрица
+	cout << endl << "// Обратная матрица" << endl;
+	a.outputConsole();
+	MyMatrix invert(4, 4);
+	invert = a.invertMatrix();
+	cout << "Invert: " << endl;
+	invert.outputConsole();
+	cout << "Test( Invert * a ): " << endl;
+	invert = invert * a;
+	invert.outputConsole();
+
+
+	// Пример использования лямбда функции
+	cout << endl << "// Пример использования лямбда функции" << endl;
+	int i = 1, j = 1;
+	a.setItem(i, j, ([](int i, int j) -> double{ return i * i * j; }(i, j)));
+	a.outputConsole();
 }
 
