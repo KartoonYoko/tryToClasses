@@ -1,97 +1,152 @@
-#MyMatrix Class
+## MyMatrix Class
 
-Класс матрица. Класс представляет матрицу размера N x M, где N - кол-во строк, M - кол-во столбцов.
+РљР»Р°СЃСЃ РјР°С‚СЂРёС†Р°. РљР»Р°СЃСЃ РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ РјР°С‚СЂРёС†Сѓ СЂР°Р·РјРµСЂР° N x M, РіРґРµ N - РєРѕР»-РІРѕ СЃС‚СЂРѕРє, M - РєРѕР»-РІРѕ СЃС‚РѕР»Р±С†РѕРІ.
 
-Header: #include tryToMatrix.h
+**Header**: #include tryToMatrix.h
 
-##Public-Functions
+#### Public-Functions
 
-|                                        |                                              |
-| -------------------------------- | --------------------------------  
-|                                        |MyMatrix();                                                                                   
-|                                        |MyMatrix(const int& row, const int& col);                                     
-|                                        |MyMatrix(const int& row, const int& col, const VecType& num); |
-|int                                    |getCol() const; 
-|int                                    |getRow() const;
-|void                                 |expand(const int& row, const int& col); 
-|void                                 |expand(const int& row, const int& col, const VecType& num);
-|VecType                          |getItem(const int& row, const int& col) const;	
-|void                                 |setItem(const int& row, const int& col, const VecType& num); 
-|VecType&                       |operator ()(const int& row, const int& col);
-|vector<VecType>           |operator [](const int& index);
-|void                                |fill(const VecType& num);	
-|void                                |fillRand();
-|void                                |fillRand(const int& fromNum, const int& lastNum);
-|void                                |operator =(const MyMatrix &rightMatrix); 
-|MyMatrix                        |operator +(const MyMatrix& rightMatrix);
-|MyMatrix                        |operator -(const MyMatrix& rightMatrix);
-|MyMatrix                        |operator *(const VecType& num); 
-|MyMatrix                        |operator *(const MyMatrix& rightMatrix);
-|void                                |operator *=(const MyMatrix& rightMatrix);
-|void                                |operator *=(const VecType& num);
-|void                                |operator -=(const MyMatrix& rightMatrix);
-|void                                |operator +=(const MyMatrix& rightMatrix);
-|void                                |transpose();
-|void                                |diag();
-|double                            |determinant();
-|void                                |outputConsole();
+|                 | MyMatrix()                                                   |
+| --------------- | :----------------------------------------------------------- |
+|                 | MyMatrix(const int& row, const int& col)                     |
+|                 | MyMatrix(const int& row, const int& col, const VecType& num) |
+| int             | getCol() const                                               |
+| int             | getRow() const                                               |
+| void            | expand(const int& row, const int& col)                       |
+| void            | expand(const int& row, const int& col, const VecType& num)   |
+| VecType         | getItem(const int& row, const int& col) const                |
+| void            | setItem(const int& row, const int& col, const VecType& num)  |
+| VecType&        | operator ()(const int& row, const int& col)                  |
+| vector<VecType> | operator [](const int& index)                                |
+| void            | fill(const VecType& num)                                     |
+| void            | fillRand()                                                   |
+| void            | fillRand(const int& fromNum, const int& lastNum)             |
+| MyMatrix        | operator =(const MyMatrix &rightMatrix)                      |
+| MyMatrix        | operator +(const MyMatrix& rightMatrix)                      |
+| MyMatrix        | operator -(const MyMatrix& rightMatrix)                      |
+| MyMatrix        | operator *(const VecType& num)                               |
+| MyMatrix        | operator *(const MyMatrix& rightMatrix)                      |
+| void            | operator *=(const MyMatrix& rightMatrix)                     |
+| void            | operator *=(const VecType& num)                              |
+| void            | operator -=(const MyMatrix& rightMatrix)                     |
+| void            | operator +=(const MyMatrix& rightMatrix)                     |
+| void            | transpose()                                                  |
+| void            | diag()                                                       |
+| double          | determinant()                                                |
+| void            | outputConsole()                                              |
 
-##Описание
-typedef double VecType; // тип элементов матрицы(вектора)
 
-##Описание методов класса
 
-###MyMatrix()
-    Создает нулевую матрицу размера 1х1.
-###MyMatrix(const int& row, const int& col)
-    Сздает нулевую матрицу размера row x col.
-###MyMatrix(const int& row, const int& col, const VecType& num)
-    Создает матрицу, заполненную числом num, размера row x col
-###int getCol() const
-    Получить кол-во столбцов
-###int getRow() const
-    Получить кол-во строк
-###void  expand(const int& row, const int& col)
-    Расширяет матрицу до размера row x col и заполняет новые ячейки нулями
-###void  expand(const int& row, const int& col, const VecType& num)
-    Расширяет матрицу до оазмера row x col и заполняет новые ячейки числом num
-###VecType getItem(const int& row, const int& col) const                                                                 
-    Вернет элемент матрицы на позицию row x col
-###void setItem(const int& row, const int& col, const VecType& num)
-    Внесет num в матрицу на позицию row x col
-###VecType& operator ()(const int& row, const int& col)
-    Вернет элемент матрицы row x col по ссылке (для быстрого внесения значения в матрицу)
-###vector<VecType> operator [](const int& index)
-    Доступ к строкам матрицы
-###void fill(const VecType& num)
-    Заполнение матрицы одним значение
-###void fillRand()
-    Заполнение матрицы случайными числами
-###void fillRand(const int& fromNum, const int& lastNum)
-    Заполнение матрицы случайными числами от fromNum до lastNum(целочисленного типа, т.к. рандом работает только с целыми), с десятичным остатком
-###void operator =(const MyMatrix &rightMatrix)
-    В левую матрицу заносятся значения правой матрицы (толко для одноразмерных матриц)
-###MyMatrix operator +(const MyMatrix& rightMatrix)
-    Сложениме матриц
-###MyMatrix operator -(const MyMatrix& rightMatrix)
-    Вычитание матриц
-###MyMatrix operator *(const VecType& num)
-    Умножение на число
-###MyMatrix operator *(const MyMatrix& rightMatrix)
-    Умножение матрицы на матрицу
-###void operator *=(const MyMatrix& rightMatrix)
-    Умножение матрицы на матрицу
-###void operator *=(const VecType& num)
-    Умножение на число
-###void operator -=(const MyMatrix& rightMatrix)
-    Вычитание матриц
-###void operator +=(const MyMatrix& rightMatrix)
-    Сложениме матриц
-###void transpose()
-    Транспонирование текущей матрицы
-###void diag()
-    Создание диагональной матрицы
-###double determinant()
-    Вычесление определителя
-###void outputConsole()
-    Вывод матрицы в консоль
+#### РћРїРёСЃР°РЅРёРµ
+
+typedef double VecType; // С‚РёРї СЌР»РµРјРµРЅС‚РѕРІ РјР°С‚СЂРёС†С‹(РІРµРєС‚РѕСЂР°)
+
+##### РћРїРёСЃР°РЅРёРµ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР°
+
+###### MyMatrix()
+
+вЂ‹    РЎРѕР·РґР°РµС‚ РЅСѓР»РµРІСѓСЋ РјР°С‚СЂРёС†Сѓ СЂР°Р·РјРµСЂР° 1С…1.
+
+###### MyMatrix(const int& row, const int& col)
+
+вЂ‹    РЎР·РґР°РµС‚ РЅСѓР»РµРІСѓСЋ РјР°С‚СЂРёС†Сѓ СЂР°Р·РјРµСЂР° row x col.
+
+###### MyMatrix(const int& row, const int& col, const VecType& num)
+
+вЂ‹    РЎРѕР·РґР°РµС‚ РјР°С‚СЂРёС†Сѓ, Р·Р°РїРѕР»РЅРµРЅРЅСѓСЋ С‡РёСЃР»РѕРј num, СЂР°Р·РјРµСЂР° row x col
+
+###### int getCol() const
+
+вЂ‹    РџРѕР»СѓС‡РёС‚СЊ РєРѕР»-РІРѕ СЃС‚РѕР»Р±С†РѕРІ
+
+###### int getRow() const
+
+вЂ‹    РџРѕР»СѓС‡РёС‚СЊ РєРѕР»-РІРѕ СЃС‚СЂРѕРє
+
+###### void  expand(const int& row, const int& col)
+
+вЂ‹    Р Р°СЃС€РёСЂСЏРµС‚ РјР°С‚СЂРёС†Сѓ РґРѕ СЂР°Р·РјРµСЂР° row x col Рё Р·Р°РїРѕР»РЅСЏРµС‚ РЅРѕРІС‹Рµ СЏС‡РµР№РєРё РЅСѓР»СЏРјРё
+
+###### void  expand(const int& row, const int& col, const VecType& num)
+
+вЂ‹    Р Р°СЃС€РёСЂСЏРµС‚ РјР°С‚СЂРёС†Сѓ РґРѕ РѕР°Р·РјРµСЂР° row x col Рё Р·Р°РїРѕР»РЅСЏРµС‚ РЅРѕРІС‹Рµ СЏС‡РµР№РєРё С‡РёСЃР»РѕРј num
+
+###### VecType getItem(const int& row, const int& col) const                                                                 
+
+вЂ‹    Р’РµСЂРЅРµС‚ СЌР»РµРјРµРЅС‚ РјР°С‚СЂРёС†С‹ РЅР° РїРѕР·РёС†РёСЋ row x col
+
+###### void setItem(const int& row, const int& col, const VecType& num)
+
+вЂ‹    Р’РЅРµСЃРµС‚ num РІ РјР°С‚СЂРёС†Сѓ РЅР° РїРѕР·РёС†РёСЋ row x col
+
+###### VecType& operator ()(const int& row, const int& col)
+
+вЂ‹    Р’РµСЂРЅРµС‚ СЌР»РµРјРµРЅС‚ РјР°С‚СЂРёС†С‹ row x col РїРѕ СЃСЃС‹Р»РєРµ (РґР»СЏ Р±С‹СЃС‚СЂРѕРіРѕ РІРЅРµСЃРµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ РІ РјР°С‚СЂРёС†Сѓ)
+
+###### vector<VecType> operator [](const int& index)
+
+вЂ‹    Р”РѕСЃС‚СѓРї Рє СЃС‚СЂРѕРєР°Рј РјР°С‚СЂРёС†С‹
+
+###### void fill(const VecType& num)
+
+вЂ‹    Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°С‚СЂРёС†С‹ РѕРґРЅРёРј Р·РЅР°С‡РµРЅРёРµ
+
+###### void fillRand()
+
+вЂ‹    Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°С‚СЂРёС†С‹ СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
+
+###### void fillRand(const int& fromNum, const int& lastNum)
+
+вЂ‹    Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°С‚СЂРёС†С‹ СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё РѕС‚ fromNum РґРѕ lastNum(С†РµР»РѕС‡РёСЃР»РµРЅРЅРѕРіРѕ С‚РёРїР°, С‚.Рє. СЂР°РЅРґРѕРј СЂР°Р±РѕС‚Р°РµС‚ С‚РѕР»СЊРєРѕ СЃ С†РµР»С‹РјРё), СЃ РґРµСЃСЏС‚РёС‡РЅС‹Рј РѕСЃС‚Р°С‚РєРѕРј
+
+###### void operator =(const MyMatrix &rightMatrix)
+
+вЂ‹    Р’ Р»РµРІСѓСЋ РјР°С‚СЂРёС†Сѓ Р·Р°РЅРѕСЃСЏС‚СЃСЏ Р·РЅР°С‡РµРЅРёСЏ РїСЂР°РІРѕР№ РјР°С‚СЂРёС†С‹ (С‚РѕР»РєРѕ РґР»СЏ РѕРґРЅРѕСЂР°Р·РјРµСЂРЅС‹С… РјР°С‚СЂРёС†)
+
+###### MyMatrix operator +(const MyMatrix& rightMatrix)
+
+вЂ‹    РЎР»РѕР¶РµРЅРёРјРµ РјР°С‚СЂРёС†
+
+###### MyMatrix operator -(const MyMatrix& rightMatrix)
+
+вЂ‹    Р’С‹С‡РёС‚Р°РЅРёРµ РјР°С‚СЂРёС†
+
+###### MyMatrix operator *(const VecType& num)
+
+вЂ‹    РЈРјРЅРѕР¶РµРЅРёРµ РЅР° С‡РёСЃР»Рѕ
+
+###### MyMatrix operator *(const MyMatrix& rightMatrix)
+
+вЂ‹    РЈРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†С‹ РЅР° РјР°С‚СЂРёС†Сѓ
+
+###### void operator *=(const MyMatrix& rightMatrix)
+
+вЂ‹    РЈРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†С‹ РЅР° РјР°С‚СЂРёС†Сѓ
+
+###### void operator *=(const VecType& num)
+
+вЂ‹    РЈРјРЅРѕР¶РµРЅРёРµ РЅР° С‡РёСЃР»Рѕ
+
+###### void operator -=(const MyMatrix& rightMatrix)
+
+вЂ‹    Р’С‹С‡РёС‚Р°РЅРёРµ РјР°С‚СЂРёС†
+
+###### void operator +=(const MyMatrix& rightMatrix)
+
+вЂ‹    РЎР»РѕР¶РµРЅРёРјРµ РјР°С‚СЂРёС†
+
+###### void transpose()
+
+вЂ‹    РўСЂР°РЅСЃРїРѕРЅРёСЂРѕРІР°РЅРёРµ С‚РµРєСѓС‰РµР№ РјР°С‚СЂРёС†С‹
+
+###### void diag()
+
+вЂ‹    РЎРѕР·РґР°РЅРёРµ РґРёР°РіРѕРЅР°Р»СЊРЅРѕР№ РјР°С‚СЂРёС†С‹
+
+###### double determinant()
+
+вЂ‹    Р’С‹С‡РµСЃР»РµРЅРёРµ РѕРїСЂРµРґРµР»РёС‚РµР»СЏ
+
+###### void outputConsole()
+
+вЂ‹    Р’С‹РІРѕРґ РјР°С‚СЂРёС†С‹ РІ РєРѕРЅСЃРѕР»СЊ
